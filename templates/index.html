@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pneumonia Detection</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+
+  <body>
+    <header class="app-header">
+      <h1>Pneumonia Detection System</h1>
+      <p>AI-assisted chest X-ray screening (educational use only)</p>
+    </header>
+
+    <main class="main-container">
+      <form id="uploadForm" enctype="multipart/form-data">
+        <label class="file-label" id="fileLabel">
+          <span id="fileText">Upload Chest X-ray Image</span>
+          <input type="file" name="file" id="fileInput" accept="image/*" />
+        </label>
+
+        <!-- Image preview BEFORE analyze -->
+        <img id="previewImage" class="hidden" alt="Chest X-ray preview" />
+
+        <button type="submit" id="predictBtn" disabled>Analyze X-ray</button>
+      </form>
+
+      <div id="result" class="hidden">
+        <h2 id="predictionTitle"></h2>
+        <p id="predictionDesc"></p>
+      </div>
+      <div id="recheck-section" class="recheck-section hidden">
+        <p class="recheck-text">Want to analyze another chest X-ray?</p>
+        <button class="secondary-btn" onclick="resetApp()">
+          Analyze Another Image
+        </button>
+      </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>
